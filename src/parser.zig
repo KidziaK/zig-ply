@@ -114,7 +114,7 @@ const FiniteStateMachine = struct {
         return std.fmt.parseInt(usize, num_token, 10) catch return ParsingError.InvalidElementCount;
     }
 
-    fn parseAlloc(self: *Self, alloc: std.mem.Allocator, file_path: []const u8) !Mesh {
+    pub fn parseAlloc(self: *Self, alloc: std.mem.Allocator, file_path: []const u8) !Mesh {
         const file = try std.fs.openFileAbsolute(file_path, .{});
         defer file.close();
 
