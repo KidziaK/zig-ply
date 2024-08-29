@@ -7,14 +7,14 @@ pub const Mesh = struct {
     faces: [][3] u32,
     alloc: std.mem.Allocator,
 
-    fn init(alloc: std.mem.Allocator, num_v: usize, num_f: usize) !Self {
+    pub fn init(alloc: std.mem.Allocator, num_v: usize, num_f: usize) !Self {
         const vertices = try alloc.alloc([3]f32, num_v);
         const faces = try alloc.alloc([3]u32, num_f);
 
         return Mesh { .vertices = vertices, .faces = faces, .alloc = alloc};
     }
 
-    fn deinit(self: *Self) void {
+    pub fn deinit(self: *Self) void {
         self.alloc.free(self.vertices);
         self.alloc.free(self.faces);
     }
@@ -48,11 +48,11 @@ pub const FiniteStateMachine = struct {
     num_v: usize,
     num_f: usize,
 
-    fn init() Self {
+    pub fn init() Self {
         return FiniteStateMachine { .state = State.HeaderStart, .num_v = 0, .num_f = 0 };
     }
 
-    fn deinit() void {
+    pub fn deinit() void {
 
     }
 
