@@ -1,6 +1,6 @@
 const std = @import("std");
 
-const Mesh = struct {
+pub const Mesh = struct {
     const Self = @This();
 
     vertices: [][3] f32,
@@ -21,7 +21,7 @@ const Mesh = struct {
 };
 
 
-const FiniteStateMachine = struct {
+pub const FiniteStateMachine = struct {
     const Self = @This();
 
     const State = enum { 
